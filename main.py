@@ -2,6 +2,7 @@ import pygame as pg
 import moderngl as mgl
 import sys
 from model import *
+from camera import Camera
 
 class GraphicsEngine:
 	def __init__(self, win_size=(1200,700)):
@@ -18,8 +19,10 @@ class GraphicsEngine:
 		self.ctx = mgl.create_context()
 		# create an object to help track time
 		self.clock = pg.time.Clock()
+		# camera
+		self.camera = Camera(self)
 		# scene
-		self.scene = Triangle(self)
+		self.scene = Cube(self)
 
 	def check_events(self):
 		for event in pg.event.get():
